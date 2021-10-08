@@ -1,6 +1,11 @@
 
 package deslocal;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 /**
  *
  * @author eduwi
@@ -77,7 +82,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_CifradoMouseClicked
 
     private void DecifradoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DecifradoMouseClicked
-     new cifrado().setVisible(true);
+     new Descifrado().setVisible(true);
       dispose();
     }//GEN-LAST:event_DecifradoMouseClicked
 
@@ -112,6 +117,17 @@ public class Menu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu().setVisible(true);
+                try {
+                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InstantiationException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IllegalAccessException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedLookAndFeelException ex) {
+                    Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

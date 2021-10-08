@@ -135,8 +135,14 @@ public class cifrado extends javax.swing.JFrame {
     }//GEN-LAST:event_LLaveKeyTyped
 
     private void CifrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CifrarMouseClicked
-        try {
-            des.Desencriptar(LLave.getText(),ruta);
+       if(ruta==null){
+        JOptionPane.showMessageDialog(null,"Revise que haya eligido el archivo correcto");
+   }
+   else if(LLave.getText().length()<8){
+   JOptionPane.showMessageDialog(null,"Revise la llave debe de ser de 8 caracteres");
+   }
+   else { try {
+            des.Encripitar(LLave.getText(),ruta);
         } catch (Exception ex) {
             Logger.getLogger(cifrado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -149,6 +155,8 @@ public class cifrado extends javax.swing.JFrame {
        catch (Exception ex) {
         Logger.getLogger(cifrado.class.getName()).log(Level.SEVERE, null, ex);
     }
+   }
+     
     }//GEN-LAST:event_CifrarMouseClicked
 
     private void AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMouseClicked

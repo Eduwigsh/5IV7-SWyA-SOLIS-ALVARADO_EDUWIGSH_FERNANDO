@@ -115,9 +115,9 @@ public class Descifrado extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ArchivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ArchivoMouseClicked
-        
+         
        JFileChooser jFileChooser =new JFileChooser();
-      FileNameExtensionFilter filtrado=new FileNameExtensionFilter("cifrado");
+      FileNameExtensionFilter filtrado=new FileNameExtensionFilter("cifrado","cifrado");
       jFileChooser.setFileFilter(filtrado);
       int respuesta=jFileChooser.showOpenDialog(this);
       if(respuesta==JFileChooser.APPROVE_OPTION){
@@ -135,8 +135,15 @@ public class Descifrado extends javax.swing.JFrame {
     }//GEN-LAST:event_LLaveKeyTyped
 
     private void DescifrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DescifrarMouseClicked
-        try {
-            des.Encripitar(LLave.getText(),ruta);
+       if(ruta==null){
+        JOptionPane.showMessageDialog(null,"Revise que haya eligido el archivo correcto");
+   }
+  else  if(LLave.getText().length()<8){
+   JOptionPane.showMessageDialog(null,"Revise la llave debe de ser de 8 caracteres");
+   }
+  
+   else {  try {
+            des.Desencriptar(LLave.getText(),ruta);
         } catch (Exception ex) {
             Logger.getLogger(Descifrado.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -149,6 +156,7 @@ public class Descifrado extends javax.swing.JFrame {
        catch (Exception ex) {
         Logger.getLogger(Descifrado.class.getName()).log(Level.SEVERE, null, ex);
     }
+   }
     }//GEN-LAST:event_DescifrarMouseClicked
 
     private void AtrasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMouseClicked
